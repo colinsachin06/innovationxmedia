@@ -58,11 +58,9 @@
         }
         .service-card:hover::before { transform: scale(1.1); }
         
-        /* Define specific images for each card */
         .service-card-ai::before { background-image: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop'); }
         .service-card-video::before { background-image: url('https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?q=80&w=1200&auto=format&fit=crop'); }
         .service-card-web::before { background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop'); }
-        /* Fixed Thumbnail Image */
         .service-card-thumb::before { background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1200&auto=format&fit=crop'); }
         
         /* Number Counter Animation */
@@ -426,30 +424,33 @@
                 <div class="grid md:grid-cols-3 gap-8 mb-16">
                     <div class="md:col-span-2 reveal fade-left">
                         <div class="bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-3xl p-8 shadow-xl transition-colors">
-                            <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                            <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                                <input type="hidden" name="access_key" value="7433f9fd-95c3-4253-98bd-a5eb3d32c442">
+                                <input type="hidden" name="subject" value="New Submission from Website">
+                                
                                 <div class="grid md:grid-cols-2 gap-6">
                                     <div>
                                         <label class="block text-sm font-semibold mb-2 dark:text-gray-300">Full Name *</label>
-                                        <input type="text" required class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none dark:bg-slate-700 dark:border-slate-600 dark:text-white" placeholder="John Doe">
+                                        <input type="text" name="name" required class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none dark:bg-slate-700 dark:border-slate-600 dark:text-white" placeholder="John Doe">
                                     </div>
                                     <div>
                                         <label class="block text-sm font-semibold mb-2 dark:text-gray-300">Company Name</label>
-                                        <input type="text" class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none dark:bg-slate-700 dark:border-slate-600 dark:text-white" placeholder="Your Company">
+                                        <input type="text" name="company" class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none dark:bg-slate-700 dark:border-slate-600 dark:text-white" placeholder="Your Company">
                                     </div>
                                 </div>
                                 <div class="grid md:grid-cols-2 gap-6">
                                     <div>
                                         <label class="block text-sm font-semibold mb-2 dark:text-gray-300">Email Address *</label>
-                                        <input type="email" required class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none dark:bg-slate-700 dark:border-slate-600 dark:text-white" placeholder="john@company.com">
+                                        <input type="email" name="email" required class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none dark:bg-slate-700 dark:border-slate-600 dark:text-white" placeholder="john@company.com">
                                     </div>
                                     <div>
                                         <label class="block text-sm font-semibold mb-2 dark:text-gray-300">Phone Number *</label>
-                                        <input type="tel" required class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none dark:bg-slate-700 dark:border-slate-600 dark:text-white" placeholder="+1 (555) 000-0000">
+                                        <input type="tel" name="phone" required class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none dark:bg-slate-700 dark:border-slate-600 dark:text-white" placeholder="+1 (555) 000-0000">
                                     </div>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-semibold mb-2 dark:text-gray-300">Service Interested In *</label>
-                                    <select required class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none dark:bg-slate-700 dark:border-slate-600 dark:text-white">
+                                    <select name="service" required class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none dark:bg-slate-700 dark:border-slate-600 dark:text-white">
                                         <option value="ai-agents">AI Calling Agents</option>
                                         <option value="video">Video Production</option>
                                         <option value="thumbnails">Thumbnail Design</option>
@@ -458,17 +459,10 @@
                                 </div>
                                 <div>
                                     <label class="block text-sm font-semibold mb-2 dark:text-gray-300">Project Details *</label>
-                                    <textarea required rows="4" class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none dark:bg-slate-700 dark:border-slate-600 dark:text-white" placeholder="Tell us about your project..."></textarea>
+                                    <textarea name="message" required rows="4" class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none dark:bg-slate-700 dark:border-slate-600 dark:text-white" placeholder="Tell us about your project..."></textarea>
                                 </div>
                                 <button type="submit" class="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">Send Request</button>
                             </form>
-                            <div id="success-message" class="hidden text-center py-12">
-                                <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                                    <i data-lucide="check" class="w-10 h-10 text-green-600"></i>
-                                </div>
-                                <h3 class="text-2xl font-bold mb-2 dark:text-white">Thank You!</h3>
-                                <p class="text-gray-600 dark:text-gray-300">We've received your message and will be in touch shortly.</p>
-                            </div>
                         </div>
                     </div>
                     <div class="reveal fade-right space-y-6">
@@ -641,20 +635,6 @@
                 nav.classList.remove('py-2');
             }
         });
-
-        // --- Form Handling ---
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            const form = document.getElementById('contact-form');
-            const successMsg = document.getElementById('success-message');
-            form.style.display = 'none';
-            successMsg.classList.remove('hidden');
-            setTimeout(() => {
-                form.reset();
-                form.style.display = 'block';
-                successMsg.classList.add('hidden');
-            }, 5000);
-        }
 
         // --- Initialization ---
         document.addEventListener('DOMContentLoaded', () => {
